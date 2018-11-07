@@ -24,7 +24,7 @@ public class DriverEngine {
             logger.info("tryCnt = " + tryCnt);
             closeDriver();
             try {
-                if ("iOS".equals(capabilities.getCapability("platformName"))) {
+                if ("iOS".equals(capabilities.getCapability(Constants.PLATFORMNAME))) {
                     logger.info("creating iOS driver");
                     driver = new IOSDriver(new URL(Capabilities.getUrl()), capabilities);
                 } else {
@@ -57,6 +57,10 @@ public class DriverEngine {
         DesiredCapabilities capabilities = Capabilities.getCapabilities();
         initDriverWithCapabilities(capabilities);
         logger.info("app启动参数：" + driver.getCapabilities());
+    }
+
+    public static AppiumDriver<WebElement> getDriver(){
+        return driver;
     }
 
     public static void closeDriver() {
