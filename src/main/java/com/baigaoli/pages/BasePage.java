@@ -12,6 +12,9 @@ import java.time.Duration;
  */
 public class BasePage {
 
+    /**
+     * 初始化页面元素
+     */
     public BasePage() {
         PageFactory.initElements(new AppiumFieldDecorator(DriverEngine.getDriver(), Duration.ofSeconds(Constants.TIME_OUT)), this);
     }
