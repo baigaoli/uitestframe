@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 public class DriverEngine {
     private static Logger logger = Logger.getLogger("DriverEngine");
     public static AppiumDriver<WebElement> driver;
+    public static AndroidDriverUtil androidDriverUtil = new AndroidDriverUtil();
+    public static IOSDriverUtil iosDriverUtil = new IOSDriverUtil();
 
     public static void initDriverWithCapabilities(DesiredCapabilities capabilities){
         int tryCnt = 3;
@@ -26,10 +28,10 @@ public class DriverEngine {
             try {
                 if ("iOS".equals(capabilities.getCapability(Constants.PLATFORMNAME))) {
                     logger.info("creating iOS driver");
-                    driver = new IOSDriver(new URL(Capabilities.getUrl()), capabilities);
+                    driver = iosDriverUtil.initDriver(new URL(Capabilities.getUrl()), capabilities);
                 } else {
                     logger.info("creating Android driver");
-                    driver = new AndroidDriver(new URL(Capabilities.getUrl()), capabilities);
+                    driver = androidDriverUtil.initDriver(new URL(Capabilities.getUrl()), capabilities);
                 }
                 logger.info("session id :" + driver.getSessionId());
                 if (driver.getSessionId() != null) {
