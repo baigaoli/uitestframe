@@ -28,10 +28,10 @@ public class DriverEngine {
             try {
                 if ("iOS".equals(capabilities.getCapability(Constants.PLATFORMNAME))) {
                     logger.info("creating iOS driver");
-                    driver = iosDriverUtil.initDriver(new URL(Capabilities.getUrl()), capabilities);
+                    driver = new IOSDriver<WebElement>( new URL(Capabilities.getUrl()), capabilities);
                 } else {
                     logger.info("creating Android driver");
-                    driver = androidDriverUtil.initDriver(new URL(Capabilities.getUrl()), capabilities);
+                    driver = new AndroidDriver<WebElement>(new URL(Capabilities.getUrl()), capabilities);
                 }
                 logger.info("session id :" + driver.getSessionId());
                 if (driver.getSessionId() != null) {

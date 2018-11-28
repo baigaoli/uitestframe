@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" parallel="false">
+    <test name="uitestFrameTest" preserve-order="true">
+        <classes>
+            <class name="com.baigaoli.cases.LoginCase">
+                <methods>
+                    <include name="login"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="com.baigaoli.util.RetryListener"/>
+    </listeners>
+</suite>
